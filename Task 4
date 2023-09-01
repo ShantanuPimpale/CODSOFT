@@ -1,0 +1,121 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+class Task
+{
+    public:
+    string description;
+    int status;
+    void Input( );
+    void Display();
+    void AddTask(vector<Task> &A);
+    void MarkStatus(vector<Task>&A);
+    void Remove(vector<Task>&A);
+};
+void Task::Input()
+{
+   cout<<"Enter The Task Description:";
+   cin>>description;
+   status=0;
+}
+void Task::Display()
+{
+    cout<<description<<"\t";
+    if(status==0)
+    {
+        cout<<"Not Completed!\n";
+    }
+    else
+    {
+        cout<<"Completed!!\n";
+    }
+}
+void Task::AddTask(vector<Task>& A)
+{
+    int n;
+    Task newTask;
+    cout<<"Enter the No of Tasks You want to add:";
+    cin>>n;
+    for(int i=0;i<n;i++)
+    {
+        newTask.Input();
+        A.push_back(newTask);
+    }
+}
+void Task::MarkStatus(vector<Task>&A)
+{
+    int index,id;
+    cout<<"Enter the Id of task You want to mark as completed:";
+    cin>>id;
+    index=id-1;
+    if(index>=0 && index<=A.size())
+    {
+        A[index].status=1;
+        cout<<"Task Marked as Completed!";
+    }
+    else
+    {
+        cout<<"Invalid Id of Task!!";
+    }
+}
+void Task:: Remove(vector<Task>&A)
+{
+    int index,id;
+    cout<<"Enter the Id of Task You want to Delete:";
+    cin>>id;
+    index=id-1;
+    if(index>=0 && index<=A.size())
+    {
+        A.erase(A.begin()+index);
+    }
+    else
+    {
+        cout<<"Invalid Id of Task!!";
+    }
+}
+int main()
+{
+    vector<Task> obj;
+    Task A;
+    int n;
+    cout<<"Enter the No. of tasks you want to add Initially:\n";
+    cin>>n;
+    for(int i=0;i<n;i++)
+    {
+        A.Input();
+        obj.push_back(A);
+    }
+    int ch,ans;
+    
+    do
+    {
+        cout<<"Enter Your Choice:\n1)Add Task\n2)Display Tasks\n3)Update Status of Tasks\n4)Remove Task\n";
+        cin>>ch;
+        switch (ch)
+        {
+            case 1:
+            A.AddTask(obj);
+            break;
+
+            case 2:
+            cout << "Tasks:\n";
+            for (size_t i = 0; i < obj.size(); ++i) 
+            {
+                cout << i + 1 << ". ";
+                obj[i].Display();
+            }
+            break;
+
+            case 3:
+            A.MarkStatus(obj);
+            break;
+
+            case 4:
+            A.Remove(obj);
+            break;
+        }
+        cout<<"Do you Want to Continue??\n1)Yes\n2)No\n";
+        cin>>ans;
+    }while(ans==1);
+    return 0;
+}
