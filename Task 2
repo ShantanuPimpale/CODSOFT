@@ -1,0 +1,77 @@
+#include<iostream>
+using namespace std;
+void Addition()
+{
+    int a,b;
+    cout<<"Enter First Number:";
+    cin>>a;
+    cout<<"Enter Second Number:";
+    cin>>b;
+    cout<<"Addition is:"<<a+b<<"\n";
+}
+void Substraction()
+{
+    float a,b;
+    cout<<"Enter First Number:";
+    cin>>a;
+    cout<<"Enter Second Number:";
+    cin>>b;
+    cout<<"Substraction is:"<<a-b<<"\n";
+}
+void Multiplication()
+{
+    float a,b;
+    cout<<"Enter First Number:";
+    cin>>a;
+    cout<<"Enter Second Number:";
+    cin>>b;
+    cout<<"Multiplication is:"<<a*b<<"\n";
+}
+void Division()
+{
+    float a,b;
+    cout<<"Enter First Number:";
+    cin>>a;
+    cout<<"Enter Second Number:";
+    cin>>b;
+    if(b==0)
+    {
+        cout<<"Please check your Input once again!!\n As Denominator can not be zero!!\n";
+        Division();
+    }
+    else
+    {
+        cout<<"Division is:"<<a/b<<"\n";
+    }
+}
+int main()
+{
+    int ch;
+    string ans;
+    cout<<"Welcome to Simple Calculator!!\n";
+    
+    do{
+        cout<<"Enter the Arithmatic Operation You want to Perform:\n1)Addition\n2)Substraction\n3)Multiplication\n4)Division\n";
+        cin>>ch;
+        switch (ch)
+        {
+            case 1:
+            Addition();
+            break;
+
+            case 2:
+            Substraction();
+            break;
+
+            case 3:
+            Multiplication();
+            break;
+
+            case 4:
+            Division();
+            break;
+        }
+        cout<<"\nDo you Want to Continue Calculation?(yes/no)";
+        cin>>ans;
+    }while(ans=="y"||ans=="yes"||ans=="Y"||ans=="Yes"||ans=="YES");
+}
